@@ -79,6 +79,8 @@ fixSPL() {
 
         if getprop ro.vendor.build.fingerprint |grep -qiE 'samsung.*star.*lte';then
             additional="/apex/com.android.vndk.v28/lib64/libsoftkeymasterdevice.so /apex/com.android.vndk.v29/lib64/libsoftkeymasterdevice.so"
+        elif getprop ro.vendor.build.fingerprint |grep -qiE 'samsung/j4lte';then
+            additional="/apex/com.android.vndk.v28/lib/libsoftkeymasterdevice.so /apex/com.android.vndk.v29/lib/libsoftkeymasterdevice.so"
         else
             getprop ro.vendor.build.fingerprint | grep -qiE '^samsung/' && return 0
         fi
